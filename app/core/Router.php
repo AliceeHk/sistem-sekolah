@@ -5,6 +5,28 @@ use app\controllers\StudentController;
 
 class Router
 {
+    private array $routes = [];
+
+    public function add(string $method, string $uri, string $controller, string $function)
+    {
+        $this->routes[] = [
+            'method' => $method,
+            'uri' => $uri,
+            'controller' => $controller,
+            'function' => $function,
+        ];
+    }
+
+
+    foreach ($this->routes as $route) {
+        if ($route['method'] === $method && $route['uri'] === $uri) {
+            require_once './app/controllers/' . $route['controller'] . '.php';
+            $controller = new $route['controller']();
+            $controller->{$route['function']}();
+            return;
+        }
+    }
+
     public function run()
     {
         $method = $_SERVER['REQUEST_METHOD'];
