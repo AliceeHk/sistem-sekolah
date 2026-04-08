@@ -7,15 +7,16 @@ class Controller
     {
         extract($data);
 
-        // student.index
-        // student.php
+        // ubah jadi student.index
         $view = str_replace(
             '.', 
             '/', 
             $view
         );
         
-        require_once '../app/views/'.$view.'.php';
+        $content = "../app/views/{$view}.php";
+
+        require_once '../app/views/layouts/app.php';
     }
 }
 ?>
