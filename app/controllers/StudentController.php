@@ -1,8 +1,11 @@
 <?php
 namespace app\controllers;
 require_once '../app/core/Controller.php';
+require_once '../app/models/Student.php';
 
 use app\Core\Controller;
+use app\Models\Student;
+
 class StudentController extends Controller
 {
     public function index()
